@@ -37,6 +37,7 @@ TheSonics = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Sonics/Her
              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Sonics/Here Are The Sonics!!!/08 Money.mp3",
              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Sonics/Here Are The Sonics!!!/09 Walkin' The Dog.mp3"]
 TheMusicMachine = []
+blondie = []
 Madness = []
 TheAnimals =  []
 TheMonkees = []
@@ -68,7 +69,7 @@ def draw_play(gx,gy,ws):
     p1 = offset(scale(make_point(8,5)))
     p2 = offset(scale(make_point(0,9)))
 
-    draw_polygon(ws,LIGHTBLUE,global_offset(p0,p1,p2))
+    draw_polygon(ws,LIGHTBLUE,global_offset((p0,p1,p2)))
 
 clock = pygame.time.Clock()
 
