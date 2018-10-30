@@ -38,10 +38,17 @@ TheSonics = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Sonics/Her
              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Sonics/Here Are The Sonics!!!/09 Walkin' The Dog.mp3"]
 TheMusicMachine = []
 blondie = []
-Madness = []
+Madness = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Madness/Madness/12 Madness (Is All In The Mind).mp3",
+           "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Madness/Madness/06 House Of Fun.mp3",
+           "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Madness/Madness/03 It Must Be Love.mp3",
+           "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Madness/Madness/01 Our House.mp3",
+           "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Madness/Madness/09 Blue Skinned Beast.mp3"]
 TheAnimals =  []
 TheMonkees = []
-Alphaville = []
+Alphaville = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Alphaville/Forever Young/06 Forever Young.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Alphaville/Forever Young/02 Summer In Berlin.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Alphaville/Forever Young/08 Sounds Like A Melody.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Alphaville/Forever Young/05 Fallen Angel.mp3"]
 Queen = []
 def makePlaylist(bands):
     pass
