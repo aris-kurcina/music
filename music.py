@@ -14,7 +14,6 @@ clock = pygame.time.Clock()
 def pmusic(playlist):
     img = pygame.image.load("C:/Users/Sugar Love/Pictures/music.jpg")
     draw_icon(img)
-
     play_music(playlist)
 
     while True:
