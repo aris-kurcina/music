@@ -1,15 +1,23 @@
-from pygame.locals import *
 import pygame
+from pygame.locals import *
+
+
 SCALING_FACTOR = 10
 OFFSET_Y = 0
 OFFSET_X = 0
+BUFFER = 3072
 GX = 25
 GY = 10
+LIGHT_BLUE = (80,255,255)
 DARKBLUE = (0,0,255)
-LIGHTBLUE = (80,255,255)
 DARKGREY = (100,100,100)
-LIGHTGREY = (155,155,155)
+LIGHT_GREY = (155,155,155)
 PURPLE = (150,100,255)
+RED = (255,0,0)
+SHAPE_PLAY = {"color":PURPLE,"shape":[[(0,0),(8,5),(0,9)]]}
+SHAPE_STOP = {"color":LIGHT_GREY,"shape":[[(0,0),(0,9),(9,9),(9,0)]]}
+SHAPE_PAUSE = {"color":LIGHT_BLUE,"shape":[[(0,0),(0,3),(3,9),(3,0)],[(6,0),(6,3),(9,9),(9,0)]]}
+
 stopped = False
 pygame.init()
 ws = pygame.display.set_mode((250,250),0,32)
@@ -43,7 +51,7 @@ Madness = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Madness/Madness/
            "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Madness/Madness/03 It Must Be Love.mp3",
            "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Madness/Madness/01 Our House.mp3",
            "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Madness/Madness/09 Blue Skinned Beast.mp3"]
-TheAnimals =  []
+TheAnimals = []
 TheMonkees = []
 Alphaville = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Alphaville/Forever Young/06 Forever Young.mp3",
               "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Alphaville/Forever Young/02 Summer In Berlin.mp3",
@@ -52,31 +60,44 @@ Alphaville = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Alphaville/Fo
 Queen = []
 def makePlaylist(bands):
     pass
-def scale(point):
+def make_scale(point):
     
-    return { "x": point["x"] * SCALING_FACTOR, "y": point["y"] * SCALING_FACTOR }
-def offset(point):
+    return {"x": point["x"] * SCALING_FACTOR, "y": point["y"] * SCALING_FACTOR }
+def make_offset(point):
     
     return {"x":point["x"]+OFFSET_X,"y":point["y"]+OFFSET_Y}
 
-def draw_pause(x,y,ws):
-    pygame.draw.rect(ws, PURPLE, (x+25,y+10,x+55,y+70))
-    pygame.draw.rect(ws, DARKBLUE, (x+25, y+10, x -10, y + 70))
-    pygame.draw.rect(ws, DARKBLUE, (x+85, y+10, x -10, y + 70))
+
 def make_point(x,y):
     return {"x":x,"y":y}
 
-def draw_polygon(ws,color,list):
-    pygame.draw.polygon(ws, color, list)
-def global_offset(list):
-    output = list(map(lambda x,y: (x+GX, y+GY)))
+def draw_polygon(ws,color,plist):
+    pygame.draw.polygon(ws, color, plist)
+def global_offset(plist):
+    output = lambda x,y: (x+GX, y+GY),plist
     return output
-def draw_play(gx,gy,ws):
-    p0 = offset(scale(make_point(0,0)))
-    p1 = offset(scale(make_point(8,5)))
-    p2 = offset(scale(make_point(0,9)))
 
-    draw_polygon(ws,LIGHTBLUE,global_offset((p0,p1,p2)))
+def add_points(pa,pb):
+    return {"x":pa["x"]+pb["x"],"y":pa["y"]+pb["y"]}
+def make_global_point(gx,gy,points):
+    gpoint = make_point(gx,gy)
+    lpoint = make_point(points[0],points[1])
+    scale = make_scale(lpoint)
+    offset = make_offset(scale)
+    return add_points(gpoint,offset)
+
+def draw_points(gx,gy,points):
+    result = []
+    for point in points:
+        p = make_global_point(gx,gy,point)
+        result.append(p)
+    return result
+def draw_shape(gx,gy,ws,shape):
+    color = shape["color"]
+    for points in shape["shape"]:
+        draw_polygon(ws, color, draw_points(gx, gy, points))   
+
+    
 
 clock = pygame.time.Clock()
 
@@ -84,12 +105,12 @@ def pmusic(playlist):
     img = pygame.image.load("C:/Users/Sugar Love/Pictures/music.jpg")
     draw_icon(img)
 
-    #play_music(playlist)
+    play_music(playlist)
 
     while True:
         check_events()
         draw_controls()
-        draw_play(25, 10, ws)
+        pause_music(ws)
         pygame.display.flip()
 
 
@@ -111,8 +132,8 @@ def play_music(playlist):
 
 def draw_controls(params=None):
     #while pygame.mixer.music.get_busy():
-    ws.fill(LIGHTBLUE)
-    pygame.draw.circle(ws, LIGHTGREY, (125, 125), 100, 0)
+    #ws.fill(LIGHT_BLUE)
+    pygame.draw.circle(ws, LIGHT_GREY, (125, 125), 100, 0)
     pygame.draw.circle(ws, PURPLE, (125, 125), 90, 0)
 
 def check_events():
@@ -123,7 +144,7 @@ def check_events():
         if event.type == MOUSEBUTTONUP:
             mousex, mousey = pygame.mouse.get_pos()
             if 30 < mousex < 210 and 30 < mousey < 210:
-                stopmusic(ws)
+                pause_music(ws)
 
 
 
@@ -151,15 +172,15 @@ def analyze_song(song):
     print("playing %s by %s" % (song_name,band_name))
 
 
-def stopmusic(ws):
+def pause_music(ws):
     global stopped
     if not stopped:
         pygame.mixer.music.pause()
-        draw_pause(50, 50, ws)
+        draw_shape(50, 50, ws,SHAPE_PAUSE)
 
     else:
         pygame.mixer.music.unpause()
-        draw_play(50, 50, ws)
+        draw_shape(50, 50, ws,SHAPE_PLAY)
 
     stopped = not stopped
 
@@ -171,13 +192,11 @@ def getmixerargs():
 
 
 def initMixer():
-    BUFFER = 3072  # audio buffer size, number of samples since pygame 1.8.
-    FREQ, SIZE, CHAN = getmixerargs()
-    pygame.mixer.init(FREQ, SIZE, CHAN, BUFFER)
+    freq, size, chan = getmixerargs()
+    pygame.mixer.init(freq, size, chan, BUFFER)
 
 try:
     initMixer()
     pmusic(TheZombies)
 except Exception:
     print("error")
-
