@@ -7,7 +7,7 @@ import render
 stopped = False
 pygame.init()
 stop = False
-ws = pygame.display.set_mode((250,250),0,32)
+ws = pygame.display.set_mode((WSWIDTH,WSHEIGHT),0,32)
 
 clock = pygame.time.Clock()
 
@@ -21,7 +21,7 @@ def preload(playlist):
 
     while True:
         check_events()
-        draw_controls()
+        draw_controls(ws)
         pause_music(ws)
         pygame.display.flip()
 
@@ -76,18 +76,21 @@ def pause_music(ws):
 
     stopped = not stopped
 
-def getmixerargs():
-    pygame.mixer.init()
-    freq, size, chan = pygame.mixer.get_init()
-    return freq, size, chan
 
-def initMixer():
-    freq, size, chan = getmixerargs()
+
+def init():
+    freq, size, chan = pygame.mixer.get_init()
     pygame.mixer.init(freq, size, chan, BUFFER)
 
-try:
-    initMixer()
-    preload(TheZombies)
+def run():
+    try:
+        init()
+        draw_controls()
 
-except Exception:
-    print("error")
+        while True:
+
+            clock.tick(5)
+            ###preload(TheZombies)
+    except Exception:
+        print("error")
+run()

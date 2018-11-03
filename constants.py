@@ -1,5 +1,6 @@
 SCALING_FACTOR = 10
-
+WSWIDTH = 250
+WSHEIGHT = 250
 OFFSET_Y = 0
 OFFSET_X = 0
 BUFFER = 3072
@@ -17,24 +18,3 @@ RED = (255,0,0)
 SHAPE_PLAY = {"color":PURPLE,"shape":[[(0,0),(8,5),(0,9)]]}
 SHAPE_STOP = {"color":LIGHT_GREY,"shape":[[(0,0),(0,9),(9,9),(9,0)]]}
 SHAPE_PAUSE = {"color":LIGHT_BLUE,"shape":[[(0,0),(0,3),(3,9),(3,0)],[(6,0),(6,3),(9,9),(9,0)]]}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
