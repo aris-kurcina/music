@@ -1,13 +1,13 @@
 from pygame.locals import *
-from constants import *
-from songs import *
+import constants
+import songs
 import pygame
 import render
 
 stopped = False
 pygame.init()
 stop = False
-ws = pygame.display.set_mode((WSWIDTH,WSHEIGHT),0,32)
+ws = pygame.display.set_mode((constants.WSWIDTH, constants.WSHEIGHT),0,32)
 
 clock = pygame.time.Clock()
 
@@ -16,12 +16,12 @@ def makePlaylist(bands):
 
 def preload(playlist):
     img = pygame.image.load("C:/Users/Sugar Love/Pictures/music.jpg")
-    draw_icon(img)
+    render.draw_icon(img)
     play_music(playlist)
 
     while True:
         check_events()
-        draw_controls(ws)
+        render.draw_controls(ws)
         pause_music(ws)
         pygame.display.flip()
 
@@ -68,29 +68,28 @@ def pause_music(ws):
     global stopped
     if not stopped:
         pygame.mixer.music.pause()
-        draw_shape(50, 50, ws,SHAPE_PAUSE)
+        render.draw_shape(50, 50, ws, constants.SHAPE_PAUSE)
 
     else:
         pygame.mixer.music.unpause()
-        draw_shape(50, 50, ws,SHAPE_PLAY)
+        render.draw_shape(50, 50, ws, constants.SHAPE_PLAY)
 
     stopped = not stopped
 
-
-
 def init():
     freq, size, chan = pygame.mixer.get_init()
-    pygame.mixer.init(freq, size, chan, BUFFER)
+    pygame.mixer.init(freq, size, chan, constants.BUFFER)
 
 def run():
     try:
         init()
-        draw_controls()
+        render.draw_controls()
 
         while True:
-
             clock.tick(5)
-            ###preload(TheZombies)
+            # preload(songs.TheZombies)
+
     except Exception:
         print("error")
+
 run()
