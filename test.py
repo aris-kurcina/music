@@ -14,13 +14,6 @@ def draw_stuff(x, y, width, height, ws, color):
     lineThickness = 2
     pygame.draw.lines(ws, color, False, points, lineThickness)
 
-def init():
-    pygame.init()
-
-def render():
-    ws.fill(constants.WHITE)
-    draw_stuff(100, 200, 120, 150, ws, constants.RED)
-
 def check_events():
     while True:
         pygame.display.update()
@@ -29,6 +22,13 @@ def check_events():
             if event.type == QUIT:
                 pygame.quit()
                 exit()
+
+def render():
+    ws.fill(constants.WHITE)
+    draw_stuff(100, 200, 120, 150, ws, constants.RED)
+
+def init():
+    pygame.init()
 
 def run():
     init()

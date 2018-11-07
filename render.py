@@ -22,8 +22,8 @@ def draw_circle(ws, color, poffset, radius, width=0):
 def draw_controls(ws):
     #while pygame.mixer.music.get_busy():
     ws.fill(constants.LIGHT_BLUE)
-    # draw_circle(ws, constants.LIGHT_GREY, (constants.WSWIDTH/2, constants.WSHEIGHT/2), 100)
-    draw_circle(ws, constants.PURPLE, (constants.WSWIDTH/2, constants.WSHEIGHT/2), 90)
+    draw_circle(ws, constants.LIGHT_BLUE, (int(constants.WSWIDTH / 2), int(constants.WSHEIGHT / 2)), 100)
+    draw_circle(ws, constants.PURPLE, (int(constants.WSWIDTH/2), int(constants.WSHEIGHT/2)), 90)
 
 def global_offset(plist):
     output = list(map(lambda x, y: (x + constants.GX, y + constants.GY), plist))
