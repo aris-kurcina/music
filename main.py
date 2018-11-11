@@ -30,6 +30,7 @@ def init():
 def run():
     try:
         init()
+        render.draw_art(ws)
         render.draw_controls(ws)
         check_events()
 

@@ -32,7 +32,14 @@ Alphaville = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/Alphaville/Fo
 Queen = []
 TheBeatles = []
 TheWho = []
-TheAnimals = []
-TheMonkees = []
+TheAnimals = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Animals/Animalisms/19 Boom Boom (Bonus Track).mp3"]
+TheMonkees = ["C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Monkees/The Greatest Hits Of The Monkees/25 Valleri.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Monkees/The Greatest Hits Of The Monkees/14 Pleasant Valley Sunday.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Monkees/The Greatest Hits Of The Monkees/11 The Girl I Knew Somewhere.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Monkees/The Greatest Hits Of The Monkees/05 (I'm Not Your) Steppin' Stone.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Monkees/The Greatest Hits Of The Monkees/04 Daydream Believer.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Monkees/The Greatest Hits Of The Monkees/03 Last Train To Clarksville.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Monkees/The Greatest Hits Of The Monkees/02 I'm A Believer.mp3",
+              "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/The Monkees/The Greatest Hits Of The Monkees/01 (Theme From) The Monkees.mp3"]
 TheMusicMachine = []
 Blondie = []

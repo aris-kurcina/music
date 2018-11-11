@@ -20,9 +20,11 @@ def draw_circle(ws, color, poffset, radius, width=0):
     pygame.draw.circle(ws, color, poffset, radius, width)
 
 def draw_controls(ws):
-    #while pygame.mixer.music.get_busy():
+    draw_shape(constants.GX,constants.GY,ws,constants.SHAPE_PLAY)
+
+def draw_art(ws):
     ws.fill(constants.LIGHT_BLUE)
-    draw_circle(ws, constants.LIGHT_BLUE, (int(constants.WSWIDTH / 2), int(constants.WSHEIGHT / 2)), 100)
+    draw_circle(ws, constants.LIGHT_GREY, (int(constants.WSWIDTH / 2), int(constants.WSHEIGHT / 2)), 100)
     draw_circle(ws, constants.PURPLE, (int(constants.WSWIDTH/2), int(constants.WSHEIGHT/2)), 90)
 
 def global_offset(plist):
@@ -43,11 +45,14 @@ def draw_points(gx, gy, vertices):
     result = []
     for vertex in vertices:
         p = make_global_point(gx, gy, vertex)
-        result.append(p)
+        result.append((vertex[0],vertex[1]))
     return result
 
 def draw_shape(gx, gy, ws, shape):
     color = shape["color"]
     for vertices in shape["shape"]:
+
         plist = draw_points(gx, gy, vertices)
         draw_polygon(ws, color, plist)
+
+

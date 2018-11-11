@@ -16,7 +16,6 @@ def preload(playlist):
 
     # while True:
     #     render.draw_controls(ws)
-    #     pause_music(ws)
     #     pygame.display.flip()
 
 def play_music(playlist):
