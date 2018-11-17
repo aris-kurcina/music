@@ -1,11 +1,16 @@
 import pygame
 from pygame.locals import *
-from sys import exit
-import constants
+import traceback
 
+import sys
+from sys import exit
+
+sys.path.insert(0, './src/main')
+
+import constants
 import music
 import render
-import traceback
+
 
 ws = pygame.display.set_mode((constants.WSWIDTH, constants.WSHEIGHT),0,32)
 

@@ -1,6 +1,9 @@
 import pygame
 from pygame.locals import *
+import sys
 from sys import exit
+
+sys.path.insert(0, '../main')
 import constants
 
 ws = pygame.display.set_mode((constants.WSWIDTH, constants.WSHEIGHT))

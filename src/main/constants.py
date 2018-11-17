@@ -19,3 +19,7 @@ WHITE = (255, 255, 255)
 SHAPE_PLAY = {"color":RED,"shape":[[(0,0),(8,5),(0,9)]]}
 SHAPE_STOP = {"color":LIGHT_GREY,"shape":[[(0,0),(0,9),(9,9),(9,0)]]}
 SHAPE_PAUSE = {"color":LIGHT_BLUE,"shape":[[(0,0),(0,3),(3,9),(3,0)],[(6,0),(6,3),(9,9),(9,0)]]}
+
+DEFAULT_WINDOWS_WAV_ROOT_DIR = "C:/Users/Sugar Love/Music/iTunes/iTunes Media/Music/"
+DEFAULT_MACOS_WAV_ROOT_DIR = "~/"
+DEFAULT_LINUX_WAV_ROOT_DIR = "~/"

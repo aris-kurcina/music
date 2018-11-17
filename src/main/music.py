@@ -1,6 +1,7 @@
-import constants
-import songs
 import pygame
+
+import songs
+import constants
 import render
 
 stopped = False
