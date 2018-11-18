@@ -10,7 +10,8 @@ audio_file_name = ''
 
 def open_masker():
     global audio_file_name
-    audio_file_name = filedialog.askopenfilename(filetypes=(("Audio Files", ".wav .ogg"),   ("All Files", "*.*")))
+    audio_file_name = filedialog.askopenfilename(filetypes=(("Audio Files", ".mp3"),   ("All Files", "*.*")))
+    print("loaded file = " + audio_file_name);
 
 def masker_screen():
     # we will also use the audio_file_name global variable
